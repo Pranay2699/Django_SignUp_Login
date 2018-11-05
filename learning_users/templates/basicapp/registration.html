@@ -1,0 +1,22 @@
+{% extends "basicapp/base.html" %}
+{% load staticfiles %} <!--It is used for getting the static files from static folder-->
+
+{% block body_block %}
+  <div class="jumbotron">
+    {% if registered %}
+      <h1>Thank You for Registering</h1>
+    {% else %}
+      <h1>Register Here</h1>
+      <h2>Fill out the form </h2>
+
+      <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <table>
+          {{ user_form.as_table }}
+          {{ profile_form.as_table}}            
+        </table>
+        <input type="submit" name="" value="Register">
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}
